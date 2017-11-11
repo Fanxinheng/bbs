@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>LAMP兄弟连-登陆页</title>
+		<link rel="stylesheet" href="./Public/css/login.css">
+		<link rel="stylesheet" href="./Public/css/list.css">
+        <link href="./Public/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+	    <script type="text/javascript" src="./Public/umeditor/third-party/jquery.min.js"></script>
+	    <script type="text/javascript" src="./Public/umeditor/third-party/template.min.js"></script>
+	    <script type="text/javascript" charset="utf-8" src="./Public/umeditor/umeditor.config.js"></script>
+	    <script type="text/javascript" charset="utf-8" src="./Public/umeditor/umeditor.min.js"></script>
+	    <script type="text/javascript" src="./Public/umeditor/lang/zh-cn/zh-cn.js"></script>
+	</head>
+	<body>
+		<!-- 引入头部文件 -->
+		<?php 
+			
+			require "./View/Public/head.html"; 
+
+			
+		?>
+		
+		<!--大盒子-->
+		<div id="big" style="height:600px;background-color: #FFFFFF">
+			<div class="btfont">
+				<a href="#"></a>
+			</div>
+			<div class="biaodan" style="width:100% ">
+				&nbsp;
+				<form action="./index.php?c=detail&a=doReturn&pid=<?= $id?>" method="post">
+					主题：<input style="width: 300px;height:30px" type="text" name="title" value="<?= $title[0]['title']?>" disabled />
+					<h3>&nbsp;</h3>
+					<script type="text/plain" name= "content"id="myEditor" style="width:950px;height:300px;">
+					   
+					</script>
+				<h3>&nbsp;</h3>
+					<input style="width:80px;height:30px" type="submit" value="回复"/>	
+				
+				</form>
+			</div>
+		
+		</div>
+		<div id="clear"></div>
+		<!--大盒子结束-->
+			
+		<!-- 引入头部文件 -->
+		<?php 
+			
+			require "./View/Public/foot.html";  
+
+		?>
+	</body>
+</html>
+
+<script type="text/javascript">
+    //实例化编辑器
+    var um = UM.getEditor('myEditor');
+    um.addListener('blur',function(){
+        $('#focush2').html('编辑器失去焦点了')
+    });
+    um.addListener('focus',function(){
+        $('#focush2').html('')
+    });
+</script>

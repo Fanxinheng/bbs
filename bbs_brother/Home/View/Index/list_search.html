@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>LAMP兄弟连-列表页</title>
+		<link rel="stylesheet" href="./Public/css/list.css">
+	</head>
+	<body>
+		<!-- 引入头部文件 -->
+		<?php 
+
+			require "./View/Public/head.html"; 
+
+
+			//获取tid
+			$tid = $_GET['tid']; 
+
+		?>
+		
+		<!--大盒子-->
+		<div id="big">
+			<!--顶部搜索条-->
+			<div id="search">
+				<form action="./index.php?c=detail&a=list_search" method="post">
+					<input type="text" placeholder="请输入帖子名称!" name="search" value=""/>
+					<input type="submit" value="搜索"/>
+				</form>
+				<ul id="hot">
+					<li>热搜：</li>
+					<li class="red">php</li>
+					<li class="red">php视频</li>
+					<li class="red">php教程</li>
+				</ul>
+				<div id="guanzhu">
+					<ul>
+						<li><a href="#"><img src="./Public/images/sina_n.png" title="关注新浪微博"/></a></li>
+						<li><a href="#"><img src="./Public/images/qq_n.png" title="添加到QQ"/></a></li>
+						<li><a href="#"><img src="./Public/images/6.gif" title="添加笔记"/></a></li>
+						<li><a href="#"><img src="./Public/images/21.gif" title="百度浏览"/></a></li>
+						<li><a href="#"><img src="./Public/images/medal.png" title="排行榜"/></a></li>
+					</ul>
+				</div>
+			</div>
+			<!--顶部搜索条结束-->
+			
+			<!--引导层开始-->
+			<div id="yindao">
+				<p><a href="#">LAMP兄弟连</a> > <a href="#">PHP技术交流</a></p>
+			</div>
+			<!--引导层结束-->
+			
+			<!--列表开始-->
+			<div id="list">
+			
+				<div id="tiezifl">
+					<ul>
+						<li class="gaol"><a href="#">全部</a></li>
+						<li><a href="#">精华</a></li>
+						<li><a href="#">投票</a></li>
+						<li><a href="#">悬赏</a></li>
+						<li><a href="#">商品</a></li>
+					</ul>
+				</div>
+				<div id="tiezifl2">
+					<ul>
+						<li><a href="#">全部</a> |</li>
+						<li><a href="#">已解决</a> |</li>
+						<li><a href="#">我要提问</a> |</li>
+						<li><a href="#">PHP</a> |</li>
+						<li><a href="#">其他</a> |</li>
+						<li><a href="#">经验技巧</a> |</li>
+					</ul>
+				</div>
+				<div id="biaotou">
+					<ul>
+						<li class="tiezibt">排序:<a href="#">最新发帖</a>|<a href="#">最后回复</a></li>
+						<li>作者</li>
+						<li>回复</li>
+						<li>最后发表</li>
+					</ul>
+				</div>
+
+				<?php
+					
+					if(!$res3){
+						echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;抱歉，此版块没有任何帖子，快去试试吧 :)";
+						require "./View/Public/foot.html"; 
+						die;
+					}
+					
+					//遍历帖子数据
+					foreach($res3 as $k=>$v){
+						
+						//查询发帖人用户名
+						$name = $user->fields('userName')->where('id='.$v['uid'])->select();
+
+				?>
+
+				<div id="listks">
+					<div class="invitationzt">
+						<div class="invitationbt" style="width:625px">
+
+						<?php
+							//判断是否置顶
+							if($v['top']){
+						?>
+							<img src="./Public/images/zhiding.png"/>
+						<?php
+							}
+						?>
+						
+							<a href="./index.php?c=detail&a=index&pid=<?= $v['id']?>"><?= $v['title']?></a>
+
+						
+
+						<?php
+							//判断是否加精
+							if($v['elite']){
+						?>
+							<img src="./Public/images/jiajing.png"/>
+						<?php
+							}
+						?>
+						</div>
+						<div class="custorzt">
+							<img src="./Public/images/zuanshi.png"/>
+						</div>
+						<font  class="custor">
+							<?= $name==false ? '未知用户' : $name[0]['userName'] ?>
+						</font >
+						<font  class="reply">
+							27/5961
+						</font >
+						<font class="last">
+							20分钟前
+						</font>
+					</div>
+					
+					<?php
+						}
+					?>
+					
+				</div>
+				<div id="page">
+					<div id="pagefy">
+						<tr>
+					    	<td align="left" valign="top" class="fenye">共<?= $maxRows ?>条信息 &nbsp;&nbsp;<?= $page ?>/<?= $maxPage ?>页&nbsp;&nbsp;<a href="./index.php?c=detail&a=list_search&p=1<?= $url?>" target="_top" onFocus="this.blur()">首页</a>&nbsp;&nbsp;<a href="./index.php?c=detail&a=list_search&p=<?= $page-1?><?= $url?>" target="_top" onFocus="this.blur()">上一页</a>&nbsp;&nbsp;<a href="./index.php?c=detail&a=list_search&p=<?= $page+1?><?= $url?>" target="_top" onFocus="this.blur()">下一页</a>&nbsp;&nbsp;<a href="./index.php?c=detail&a=list_search&p=<?= $maxPage ?><?= $url?>" target="_top" onFocus="this.blur()">尾页</a></td>
+					  	</tr>
+					</div>
+					
+				</div>
+			</div>
+			<!--列表结束-->
+		</div>
+		<div id="clear"></div>
+		<!--大盒子结束-->
+			
+		<!-- 引入脚部文件 -->
+		<?php require "./View/Public/foot.html"; ?>
+	</body>
+</html>

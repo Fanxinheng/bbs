@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>LAMP兄弟连-注册页</title>
+		<link rel="stylesheet" href="./Public/css/register.css">
+	</head>
+	<body>
+		<!-- 引入头部文件 -->
+		<?php require "./View/Public/head.html";  ?>
+		
+		<!--大盒子-->
+		<div id="big">
+			<div class="btfont">
+				<h3>个人中心</h3>
+			</div>
+			<div class="biaodan">
+				<div class="tishi">
+					<p>请修改个人头像信息</p>
+				</div>
+				<?php  
+					if(isset($res)){
+				?>
+
+
+				<form action="./index.php?c=image&a=saveImg" method="post" enctype="multipart/form-data">
+
+					<table width="380" border="0" cellspacing="15">
+						<tr>
+							<td class="you">&nbsp;</td>
+							<td class="zuo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./Public/uploads/<?= $res[0]['oldPhoto'] ?>"><img width='100px' src="./Public/uploads/<?= $res[0]['photo'] ?>"></a></td>
+						</tr>
+						<tr>
+							<td class="you">&nbsp;</td>
+							<td class="zuo"><input type="file" name="pic" /></td>
+						</tr>
+						<tr style="text-align:center;">
+							<td class="btn" colspan="2">
+								<input type="submit" value="修改"/>
+								<input type="reset" value="重置"/>
+							</td>
+						</tr>
+					</table>
+				</form>
+				<?php
+					}else{
+					echo "<script>window.location.href='./index.php?c=index&a=index'</script>";
+					}
+				?>
+			</div>
+			<div class="butdl">
+				
+			</div>
+		</div>
+		<div id="clear"></div>
+		<!--大盒子结束-->
+			
+		<!-- 引入头部文件 -->
+		<?php require "./View/Public/foot.html";  ?>
+	</body>
+</html>

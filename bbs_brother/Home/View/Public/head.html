@@ -1,0 +1,199 @@
+	<div id="top">
+			<div class="middlediv">
+				<ul id="leftnav">
+					<li><a href="#">设为首页</a></li>
+					<li><a href="#">收藏LAMP兄弟连</a></li>
+				</ul>
+				<ul id="rightnav">
+					<li><a href="#">|帮助</a></li>
+					<li><a href="#">推广链接</a></li>
+					<li><a href="#">社区应用</a></li>
+					<li><a href="#">最新帖子</a></li>
+					<li><a href="#">精华区</a></li>
+					<li><a href="#">社区服务</a></li>
+					<li><a href="#">会员列表</a></li>
+					<li><a href="#">统计排行</a></li>
+					<li><a href="#">搜索</a></li>
+				</ul>
+			</div>
+		</div>
+		<!--顶部条结束-->
+
+		<?php 
+		
+			//实例化config表
+			$con = new Model('config');
+
+			//查询网站配置信息
+			$res10 = $con->select();
+
+		?>
+		<!--header头-->
+		<div id="header">
+			<div id="logo">
+				<a href='./index.php?c=index&a=index'><img width="233px" height="80px" src="../Admin/Public/logo/<?= $res10[0]['logo']?>"/></a>
+			</div>
+			<div id="nobrother">
+				<img src="./Public/images/nobrother.jpg"/>
+			</div>
+			<?php 
+				//判断SESSION中的uid是否存在
+				if(!isset($_SESSION['uid'])){
+
+			?>
+			<!-- 用户登录 -->
+			<div id="login">
+				<form action="./index.php?c=login&a=doLogin" method="post">
+					<table>
+						<tr>
+							<td><input type="text" name="userName" placeholder="输入用户名"/></td>
+							<td><input type="checkbox" name=""/>记住密码</td>
+							<td><a href="#"/>找回密码</a></td>
+						</tr>
+						<tr>
+							<td><input type="password" name="password" placeholder="输入密码"/></td>
+							<td><input type="submit" value="登陆"/></td>
+							<td><a href="./index.php?c=register&a=index"><input type="button" value="注册"/></a></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+
+			<?php 
+				}else{ 
+
+					//获取登录者的详细信息
+					$ud = new Model('userdetail');
+					$res = $ud->where('uid='.$_SESSION['uid'])->select();
+
+					//获取登录者的主要信息信息
+					$user = new Model('user');
+					$res28 = $user->where('id='.$_SESSION['uid'])->select();
+			?>
+
+			<div id="login">
+				<table border='0' width='350' style="margin-top:-10px;">
+					<tr align='center'>
+						<td><?= isset($res[0]['nickName']) ? $res[0]['nickName']:'吃瓜群众' ?></td>
+						<td><a href='./index.php?c=login&a=doLogout'>退出</a></td>
+						<td>消息(2)</td>
+						<td><a href='./index.php?c=center&a=index'>个人中心</a></td>
+						<td rowspan='2'><a href='./index.php?c=image&a=index'><img width='50' height='50' src="./Public/uploads/<?= $res[0]['photo'] ?>" /></a></td>
+					</tr>
+					<tr align='center'>
+						<td>饭票</td>
+						<td><?= $res28[0]['score']?></td>
+						<td>阶级</td>
+						<td>
+						<?php
+							
+							
+							//根据饭票判断职位
+							if($res28[0]['score']>=0 && $res28[0]['score']<=50){
+
+								//判断用户权限
+								if($res28[0]['auth']==2){
+									echo "皇上吉祥";
+								}else if($res28[0]['auth']==1){
+									echo "王爷来了";
+								}else{
+									echo "贫民";
+								}
+
+							
+								
+							}else if($res28[0]['score']>50 && $res28[0]['score']<=100){
+
+								//判断用户权限
+								if($res28[0]['auth']==2){
+									echo "皇上吉祥";
+								}else if($res28[0]['auth']==1){
+									echo "王爷来了";
+								}else{
+									echo "贫民";
+								}
+
+							}else if($res28[0]['score']>100 && $res28[0]['score']<=300){
+
+								//判断用户权限
+								if($res28[0]['auth']==2){
+									echo "皇上吉祥";
+								}else if($res28[0]['auth']==1){
+									echo "王爷来了";
+								}else{
+									echo "群众";
+								}
+
+							}else if($res28[0]['score']>300 && $res28[0]['score']<=800){
+
+								//判断用户权限
+								if($res28[0]['auth']==2){
+									echo "皇上吉祥";
+								}else if($res28[0]['auth']==1){
+									echo "王爷来了";
+								}else{
+									echo "百姓";
+								}
+
+							}else if($res28[0]['score']>800 && $res28[0]['score']<=2000){
+
+								//判断用户权限
+								if($res28[0]['auth']==2){
+									echo "皇上吉祥";
+								}else if($res28[0]['auth']==1){
+									echo "王爷来了";
+								}else{
+									echo "地主";
+								}
+
+							}else if($res28[0]['score']>2000 && $res28[0]['score']<=5000){
+
+								//判断用户权限
+								if($res28[0]['auth']==2){
+									echo "皇上吉祥";
+								}else if($res28[0]['auth']==1){
+									echo "王爷来了";
+								}else{
+									echo "土豪";
+								}
+
+							}else if($res28[0]['score']>5000 ){
+
+								//判断用户权限
+								if($res28[0]['auth']==2){
+									echo "皇上吉祥";
+								}else if($res28[0]['auth']==1){
+									echo "王爷来了";
+								}else{
+									echo "府尹";
+								}
+
+							}
+						?>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<?php
+				}
+			?>
+		</div>
+		<!--header头结束-->
+		
+		<!--导航条-->
+		<div id="nav">
+			<div class="middlediv">
+				<ul id="middlenav">
+					<li><a href="#">培训课程</a></li>
+					<span class="point"><li><a href="#">论坛</a></li></span>
+					<li><a href="#">兄弟连云课堂</a></li>
+					<li><a href="#">PHP视频</a></li>
+					<li><a href="#">Linux视频</a></li>
+					<li><a href="#">战地日记</a></li>
+				</ul>
+				<div id="fastroad">
+					<a href="#"><img src="./Public/images/fastroad.jpg"/></a>
+				</div>
+			</div>
+		</div>
+		<!--导航条结束

@@ -1,0 +1,18 @@
+<!--页面尾开始-->
+		<?php
+			//实例化config表
+			$con = new Model('config');
+
+			//查询网站配置信息
+			$res11 = $con->select();
+		?>
+		<div id="footer">
+			<center>
+				<p>
+					联系我们|无图版|手机浏览|清除Cookies<br/>
+					Powered by phpwind v8.7 Certificate Copyright Time now is:02-17 19:40 <br/>
+					©2006 - 2015 <?= $res11[0]['copy']?> 版权所有 Gzip disabled 京ICP备11018177号 Total 0.072194(s) query 3,<img src="./Public/images/pic.gif"/>京公网安备11011402000177
+				</p>
+			</center>
+		</div>
+		<!--页面尾结束-->

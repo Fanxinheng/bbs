@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>LAMP兄弟连-登陆页</title>
+		<link rel="stylesheet" href="./Public/css/login.css">
+	</head>
+	<body>
+		<!-- 引入头部文件 -->
+		<?php 
+			
+			require "./View/Public/head.html";  
+
+		?>
+		
+		<!--大盒子-->
+		<div id="big">
+			<div class="btfont">
+				<h3>登录</h3>
+			</div>
+			<div class="biaodan">
+				<div class="tishi">
+					<p>错误次数不得超过五次，否则会被锁定！</p>
+				</div>
+				<form action="./index.php?c=list&a=index" method="post">
+					<table width="380" border="0" cellspacing="15">
+						<tr>
+							<td class="you">用户名<span> *</span></td>
+							<td class="zuo"><input type="text" name="userName"/></td>
+						</tr>
+						<tr>
+							<td class="you">密  码<span> *</span></td>
+							<td class="zuo"><input type="password" name="password"/></td>
+						</tr>
+						<tr style="text-align:center;">
+							<td class="btn" colspan="2">
+								<input type="submit" value="登陆"/>
+								<input type="reset" value="重置"/>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<div class="butdl">
+				<h3>还没有账号？</h3>
+				<a href="./index.php?c=register&a=index"><button>去注册</button></a>
+			</div>
+		</div>
+		<div id="clear"></div>
+		<!--大盒子结束-->
+			
+		<!-- 引入头部文件 -->
+		<?php 
+			
+			require "./View/Public/foot.html";  
+
+		?>
+	</body>
+</html>

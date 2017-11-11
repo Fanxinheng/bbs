@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>LAMP兄弟连-注册页</title>
+		<link rel="stylesheet" href="./Public/css/register.css">
+	</head>
+	<body>
+		<!-- 引入头部文件 -->
+		<?php require "./View/Public/head.html";  ?>
+		
+		<!--大盒子-->
+		<div id="big">
+			<div class="btfont">
+				<h3>个人中心</h3>
+			</div>
+			<div class="biaodan">
+				<div class="tishi">
+					<p>请修改个人信息</p>
+				</div>
+				<?php  
+					if(isset($res)){
+				?>
+				<form action="./index.php?c=center&a=save" method="post">
+					<table width="380" border="0" cellspacing="15">	
+						<tr>
+							<td class="you">头  像<span> *</span></td>
+							<td class="zuo"><a href="./Public/uploads/<?= $res[0]['oldPhoto'] ?>"><img width='50px' src="./Public/uploads/<?= $res[0]['photo'] ?>"></a></td>
+						</tr>
+						<tr>
+							<td class="you">昵  称<span> *</span></td>
+							<td class="zuo"><input type="text" name="nickName" value="<?= $res[0]['nickName'] ?>"/></td>
+						</tr>
+						<tr>
+							<td class="you">密  码<span> *</span></td>
+							<td class="zuo"><input type="text" name="password" value="" placeholder="请输入新密码" /></td>
+						</tr>
+						<tr>
+							<td class="you">邮  箱<span> *</span></td>
+							<td class="zuo"><input type="email" name="email" value="<?= $res[0]['email'] ?>"/></td>
+						</tr>
+						<tr>
+							<td class="you">Q    Q<span> *</span></td>
+							<td class="zuo"><input type="text" name="qq" value="<?= $res[0]['qq'] ?>"/></td>
+						</tr>
+						<tr>
+							<td class="you">性  别<span> *</span></td>
+							<td>
+								<input type="radio" name="sex" value="m" <?= $res[0]['sex']=='m'?'checked':'' ?>/> 男
+								<input type="radio" name="sex" value="w" <?= $res[0]['sex']=='w'?'checked':'' ?>/> 女
+							</td>
+						</tr>
+						<tr style="text-align:center;">
+							<td class="btn" colspan="2">
+								<input type="submit" value="修改"/>
+								<input type="reset" value="重置"/>
+							</td>
+						</tr>
+					</table>
+				</form>
+				<?php
+					}else{
+					echo "<script>window.location.href='./index.php?c=index&a=index'</script>";
+					}
+				?>
+			</div>
+			<div class="butdl">
+				
+			</div>
+		</div>
+		<div id="clear"></div>
+		<!--大盒子结束-->
+			
+		<!-- 引入头部文件 -->
+		<?php require "./View/Public/foot.html";  ?>
+	</body>
+</html>

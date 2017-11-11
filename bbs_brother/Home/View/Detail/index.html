@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>LAMP兄弟连-列表页</title>
+		<link rel="stylesheet" href="./Public/css/detail.css">
+	</head>
+	<body>
+		<!-- 引入头部文件 -->
+		<?php 
+
+			require "./View/Public/head.html"; 
+
+			//获取置顶帖子id
+			$pid = $_GET['pid'];
+		?>
+		
+		<!--大盒子-->
+		<div id="big">
+			<!--顶部搜索条-->
+			<div id="search">
+				<form action="./index.php?c=detail&a=list_search" method="post">
+					<input type="text" placeholder="请输入帖子名称!" name="search" value=""/>
+					<input type="submit" value="搜索"/>
+				</form>
+				<ul id="hot">
+					<li>热搜：</li>
+					<li class="red">php</li>
+					<li class="red">php视频</li>
+					<li class="red">php教程</li>
+				</ul>
+				<div id="guanzhu">
+					<ul>
+						<li><a href="#"><img src="./Public/images/sina_n.png" title="关注新浪微博"/></a></li>
+						<li><a href="#"><img src="./Public/images/qq_n.png" title="添加到QQ"/></a></li>
+						<li><a href="#"><img src="./Public/images/6.gif" title="添加笔记"/></a></li>
+						<li><a href="#"><img src="./Public/images/21.gif" title="百度浏览"/></a></li>
+						<li><a href="#"><img src="./Public/images/medal.png" title="排行榜"/></a></li>
+					</ul>
+				</div>
+			</div>
+			<!--顶部搜索条结束-->
+						
+			
+			<?php
+
+				//遍历输出帖子详情
+				foreach($res18 as $k=>$v){
+
+					//实例化user表
+					$user = new Model('user');
+
+					//查询用户信息
+					$res20 = $user->where('id='.$v['uid'])->select();
+
+					//实例化userdetail表
+					$ud = new Model('userdetail');
+
+					//查询用户信息
+					$res21 = $ud->where('uid='.$v['uid'])->select();
+
+					//实例化type表
+					$type = new Model('type');
+
+					//查询版块信息
+					$typeN = $type->fields('name')->where('id='.$v['tid'])->select();
+					
+			?>
+			
+			<!--引导层开始-->
+			<div id="yindao">
+				<p><a href="./index.php?c=index&a=index">LAMP兄弟连</a> > <a href="./index.php?c=index&a=list&tid=<?= $v['tid']?>"><?= $typeN[0]['name']?></a> > <a href="#"><?= $v['title']?></a></p>
+			</div>
+			<!--引导层结束-->
+			
+			
+			<div id="list">
+				<div id="page">
+					<div id="pagefy">
+					</div>
+
+					<?php
+						//判断是否允许回复
+						if($res18[0]['replay']==0){
+				
+					?>
+					<div id="fatie">
+						<a href="./index.php?c=detail&a=return&pid=<?= $pid?>"><button image="./Public/images/fatie.png">回复</button></a>
+					</div>
+
+					<?php
+						}
+					?>
+				</div>
+			</div>
+
+			<!--楼主帖子详情开始-->
+			<div id="bigdetail">
+				<div id="detail">
+					<div id="lzinfo">
+						<div id="read">
+							<p>29585</p>
+							<p>阅读</p>
+						</div>
+						<div id="reply">
+							<p>641</p>
+							<p>回复</p>
+						</div>
+						<div id="lztoux">
+							<div id="uname">
+								<a href="#"><?= $res20[0]['userName']=='' ? '未知用户' : $res20[0]['userName']?></a>
+							</div>
+							<div id="utoux">
+								<img style="width:110px;height:110px" src="./Public/uploads/<?= $res21[0]['photo']=='' ? 'default.jpg' : $res21[0]['photo']?>"/>
+							</div>
+							<div id="ulevel">
+								<a href="#">
+							<?php
+								
+								
+								//根据饭票判断职位
+								if($res20[0]['score']>=0 && $res20[0]['score']<=50){
+
+									//判断用户权限
+									if($res20[0]['auth']==2){
+										echo "皇上吉祥";
+									}else if($res20[0]['auth']==1){
+										echo "王爷来了";
+									}else{
+										echo "贫民";
+									}
+
+								
+									
+								}else if($res20[0]['score']>50 && $res20[0]['score']<=100){
+
+									//判断用户权限
+									if($res20[0]['auth']==2){
+										echo "皇上吉祥";
+									}else if($res20[0]['auth']==1){
+										echo "王爷来了";
+									}else{
+										echo "贫民";
+									}
+
+								}else if($res20[0]['score']>100 && $res20[0]['score']<=300){
+
+									//判断用户权限
+									if($res20[0]['auth']==2){
+										echo "皇上吉祥";
+									}else if($res20[0]['auth']==1){
+										echo "王爷来了";
+									}else{
+										echo "群众";
+									}
+
+								}else if($res20[0]['score']>300 && $res20[0]['score']<=800){
+
+									//判断用户权限
+									if($res20[0]['auth']==2){
+										echo "皇上吉祥";
+									}else if($res20[0]['auth']==1){
+										echo "王爷来了";
+									}else{
+										echo "百姓";
+									}
+
+								}else if($res20[0]['score']>800 && $res20[0]['score']<=2000){
+
+									//判断用户权限
+									if($res20[0]['auth']==2){
+										echo "皇上吉祥";
+									}else if($res20[0]['auth']==1){
+										echo "王爷来了";
+									}else{
+										echo "地主";
+									}
+
+								}else if($res20[0]['score']>2000 && $res20[0]['score']<=5000){
+
+									//判断用户权限
+									if($res20[0]['auth']==2){
+										echo "皇上吉祥";
+									}else if($res20[0]['auth']==1){
+										echo "王爷来了";
+									}else{
+										echo "土豪";
+									}
+
+								}else if($res20[0]['score']>5000 ){
+
+									//判断用户权限
+									if($res20[0]['auth']==2){
+										echo "皇上吉祥";
+									}else if($res20[0]['auth']==1){
+										echo "王爷来了";
+									}else{
+										echo "府尹";
+									}
+
+								}
+							?>
+									</a><br/>
+								
+							</div>
+							<div id="uhuiz">
+								<a href="#"><img src="./Public/images/new1.gif"/></a>
+								<a href="#"><img src="./Public/images/new2.gif"/></a>
+								<a href="#"><img src="./Public/images/new4.gif"/></a>
+								<a href="#"><img src="./Public/images/new5.gif"/></a>
+								<a href="#"><img src="./Public/images/new6.gif"/></a>
+								<a href="#"><img src="./Public/images/medal1.gif"/></a>
+								<a href="#"><img src="./Public/images/medal3.gif"/></a>
+								<a href="#"><img src="./Public/images/medal4.gif"/></a>
+								<a href="#"><img src="./Public/images/medal5.gif"/></a>
+								<a href="#"><img src="./Public/images/medal7.gif"/></a>
+								<a href="#"><img src="./Public/images/medal9.gif"/></a>
+								<a href="#"><img src="./Public/images/medal10.gif"/></a>
+								<a href="#"><img src="./Public/images/new1.gif"/></a>
+								<a href="#"><img src="./Public/images/new2.gif"/></a>
+								<a href="#"><img src="./Public/images/new4.gif"/></a>
+								<a href="#"><img src="./Public/images/new5.gif"/></a>
+								<a href="#"><img src="./Public/images/new6.gif"/></a>
+								<a href="#"><img src="./Public/images/medal1.gif"/></a>
+								<a href="#"><img src="./Public/images/medal3.gif"/></a>
+								<a href="#"><img src="./Public/images/medal4.gif"/></a>
+								<a href="#"><img src="./Public/images/medal5.gif"/></a>
+								<a href="#"><img src="./Public/images/medal7.gif"/></a>
+								<a href="#"><img src="./Public/images/medal9.gif"/></a>
+								<a href="#"><img src="./Public/images/medal10.gif"/></a>
+							</div>
+							<div id="uguanz">
+								<a href="#" class="jia">加关注</a>
+								<a href="#" class="fa">发消息</a>
+							</div>
+						</div>
+					</div>
+					<div id="tzinfo">
+						<div id="tzbiaot">
+							<p><?= $v['title']?><span><a href="#">[复制链接]</a></span></p>
+						</div>
+						<div id="tzxiangq">
+							<div id="fttime">
+								<p>楼主 发表于:<?= date('Y-m-d H:i:s',$v['ctime'])?></p>
+								<ul>
+									<li><a href="#">只看楼主</a></li>
+									<li><a href="#">倒叙阅读</a></li>
+									<li><a href="#">使用道具</a></li>
+								</ul>
+							</div>
+							<div id="tzneir">
+								<p><?= $v['content']?></p>
+							</div>
+							<div id="tzfenx">
+								<a href="#"><img src="./Public/images/wechat.png"/></a>
+								<a href="#"><img src="./Public/images/QQ.png"/></a>
+								<a href="#"><img src="./Public/images/qzone.png"/></a>
+								<a href="#"><img src="./Public/images/weibo.png"/></a>
+							</div>
+							<div id="tzyinc">
+								<div></div><p>附件设置隐藏，需要回复后才能看到！</p>
+							</div>
+							<div id="tzpingf">
+								<p>共<span>2</span>条评分，兄弟连粮票<span>+10</span></p>
+							</div>
+							<div id="tzpingfxx">
+								<div class='tzpingfxxleft'>
+									<span class='tzjfname'><a href='#'>姜秀明</a></span> <span style="font-size:15px;">兄弟连粮票</span> <span class='tzjfnumber'>+5</span>
+								</div>
+								<div class='tzpingfxxright'>
+									<span class='tzjfname'>2016-10-12 11:02:12</span>
+								</div>
+							</div>
+							<div id="tzpingfxx">
+								<div class='tzpingfxxleft'>
+									<span class='tzjfname'><a href='#'>吴秀波</a></span> <span style="font-size:15px;">兄弟连粮票</span> <span class='tzjfnumber'>+5</span>
+								</div>
+								<div class='tzpingfxxright'>
+									<span class='tzjfname'>2016-10-12 11:02:12</span>
+								</div>
+							</div>
+							<div id="tzpingfxx">
+								<div class='tzpingfxxleft'>
+									<span class='tzjfname'><a href='#'>黄&nbsp;渤</a></span> <span style="font-size:15px;">兄弟连粮票</span> <span class='tzjfnumber'>+5</span>
+								</div>
+								<div class='tzpingfxxright'>
+									<span class='tzjfname'>2016-10-12 11:02:12</span>
+								</div>
+							</div>
+							<div class="tzhuif">
+								<a href=''><img src='./Public/images/huifu.jpg'/> <span>回复</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--楼主帖子详情结束-->
+			<?php
+
+				}
+
+			?>
+
+			<?php
+				
+				if(!$res19){
+
+					echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;抱歉，此帖子还没有回复，快去试试吧 :)";
+					require "./View/Public/foot.html"; 
+					die;
+				}
+
+				//遍历帖子回复信息
+				foreach($res19 as $key=>$val){
+					
+					//实例化user表
+					$user = new Model('user');
+
+					//查询用户信息
+					$res22 = $user->where('id='.$val['uid'])->select();
+
+					//实例化userdetail表
+					$ud = new Model('userdetail');
+
+					//查询用户信息
+					$res23 = $ud->where('uid='.$val['uid'])->select();	
+					
+					
+			?>
+			<!--回帖信息开始-->
+			<div id='detail'>
+				<div id="lzinfo">
+						<div id="lztoux">
+							<div id="uname">
+								<a href="#"><?= $res22[0]['userName']=='' ? '未知用户' : $res22[0]['userName']?></a>
+							</div>
+							<div id="utoux">
+								<img style="width:110px;height:110px" src="./Public/uploads/<?= $res23[0]['photo']=='' ? 'default.jpg' : $res23[0]['photo']?>"/>
+
+							</div>
+							<div id="ulevel">
+								<a href="#">
+
+								<?php
+								
+								
+								//根据饭票判断职位
+								if($res22[0]['score']>=0 && $res22[0]['score']<=50){
+
+									//判断用户权限
+									if($res22[0]['auth']==2){
+										echo "皇上吉祥";
+									}else if($res22[0]['auth']==1){
+										echo "王爷来了";
+									}else{
+										echo "贫民";
+									}
+
+								
+									
+								}else if($res22[0]['score']>50 && $res22[0]['score']<=100){
+
+									//判断用户权限
+									if($res22[0]['auth']==2){
+										echo "皇上吉祥";
+									}else if($res22[0]['auth']==1){
+										echo "王爷来了";
+									}else{
+										echo "贫民";
+									}
+
+								}else if($res22[0]['score']>100 && $res22[0]['score']<=300){
+
+									//判断用户权限
+									if($res22[0]['auth']==2){
+										echo "皇上吉祥";
+									}else if($res22[0]['auth']==1){
+										echo "王爷来了";
+									}else{
+										echo "群众";
+									}
+
+								}else if($res22[0]['score']>300 && $res22[0]['score']<=800){
+
+									//判断用户权限
+									if($res22[0]['auth']==2){
+										echo "皇上吉祥";
+									}else if($res22[0]['auth']==1){
+										echo "王爷来了";
+									}else{
+										echo "百姓";
+									}
+
+								}else if($res22[0]['score']>800 && $res22[0]['score']<=2000){
+
+									//判断用户权限
+									if($res22[0]['auth']==2){
+										echo "皇上吉祥";
+									}else if($res22[0]['auth']==1){
+										echo "王爷来了";
+									}else{
+										echo "地主";
+									}
+
+								}else if($res22[0]['score']>2000 && $res22[0]['score']<=5000){
+
+									//判断用户权限
+									if($res22[0]['auth']==2){
+										echo "皇上吉祥";
+									}else if($res22[0]['auth']==1){
+										echo "王爷来了";
+									}else{
+										echo "土豪";
+									}
+
+								}else if($res22[0]['score']>5000 ){
+
+									//判断用户权限
+									if($res22[0]['auth']==2){
+										echo "皇上吉祥";
+									}else if($res22[0]['auth']==1){
+										echo "王爷来了";
+									}else{
+										echo "府尹";
+									}
+
+								}
+							?>
+								</a><br/>
+								
+							</div>
+							<div id="uhuiz">
+								<a href="#"><img src="./Public/images/new1.gif"/></a>
+								<a href="#"><img src="./Public/images/new2.gif"/></a>
+								<a href="#"><img src="./Public/images/new4.gif"/></a>
+							</div>
+							<div id="uguanz">
+								<a href="#" class="jia">加关注</a>
+								<a href="#" class="fa">发消息</a>
+							</div>
+						</div>
+					</div>
+					<div id="tzinfo">
+						<div id="tzxiangq">
+							<div id="fttime">
+								<p>回复 发表于:<?= date('Y-m-d H:i:s',$val['ctime'])?></p>
+								<ul>
+									<li><a href="#">
+
+									<?php
+
+										//判断沙发和楼层
+										if($val['num']==1){
+											echo "沙发";
+										}else if($val['num']==2){
+											echo "板凳";
+										}else if($val['num']==3){
+											echo "地板";
+										}else{
+											echo $val['num']."楼";
+										}
+									?>
+
+									</a></li>
+								</ul>
+							</div>
+							<div id="tzneir">
+								<p><?= $val['content']?></p>
+							</div>
+							
+							<div class="tzhuif">
+								<a href='#'><img src='./Public/images/huifu.jpg'/> <span>回复</span></a>
+							</div>
+						</div>
+					</div>
+				<div class="htright">
+				
+				</div>
+			</div>
+			<!--回帖信息结束-->
+
+			<?php
+				}
+			?>
+			
+			<!--分页开始-->
+			<div id="list">
+				<div id="page">
+					<div id="pagefy">
+						<tr>
+					    	<td align="left" valign="top" class="fenye">共<?= $maxRows ?>条回帖 &nbsp;&nbsp;<?= $page ?>/<?= $maxPage ?>页 &nbsp;&nbsp;<a href="./index.php?c=detail&a=index&pid=<?= $pid?>&p=1" target="_top" onFocus="this.blur()">首页</a>&nbsp;&nbsp;<a href="./index.php?c=detail&a=index&pid=<?= $pid?>&p=<?= $page-1?>" target="_top" onFocus="this.blur()">上一页</a>&nbsp;&nbsp;<a href="./index.php?c=detail&a=index&pid=<?= $pid?>&p=<?= $page+1?>" target="_top" onFocus="this.blur()">下一页</a>&nbsp;&nbsp;<a href="./index.php?c=detail&a=index&pid=<?= $pid?>&p=<?= $maxPage ?>" target="_top" onFocus="this.blur()">尾页</a></td>
+					  	</tr>
+					</div>
+
+					<?php
+						//判断是否允许回复
+						if($res18[0]['replay']==0){
+				
+					?>
+					<div id="fatie">
+						<a href="./index.php?c=detail&a=return&pid=<?= $pid?>"><button image="./Public/images/fatie.png">回复</button></a>
+					</div>
+
+					<?php
+						}
+					?>
+
+				</div>
+			</div>
+			<!--分页结束-->
+			
+		</div>
+		
+		
+		
+		<div id="clear"></div>
+		<!--大盒子结束-->
+			
+		<!-- 引入脚部文件 -->
+		<?php require "./View/Public/foot.html"; ?>
+	</body>
+</html>

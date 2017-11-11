@@ -1,0 +1,488 @@
+/*========top的css样式设计代码=========*/
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			body{
+				background-color:#F1F2F6;
+			}
+			a{
+				text-decoration:none;
+			}
+			#top{
+				width:100%;
+				height:27px;
+				border-bottom:1px solid white;
+				background-color:#E6E9EE;
+				line-height:27px;
+			}
+			.middlediv{
+				margin:0 auto;
+				width:950px;
+			}
+			#leftnav{
+				list-style:none;
+			}
+			#leftnav li a{
+				float:left;
+				font-size:13px;
+				margin-left:5px;
+				color:#636969;
+				text-decoration:none;
+			}
+			#leftnav li a:hover{
+				color:blue;
+			}
+			#rightnav{
+				list-style:none;
+			}
+			#rightnav li a{
+				float:right;
+				font-size:13px;
+				margin-left:5px;
+				color:#636969;
+				text-decoration:none;
+			}
+			#rightnav li a:hover{
+				color:blue;
+			}
+		/*====================================*/
+		
+		/*==========header的css代码===========*/
+			#header{
+				width:950px;
+				height:80px;
+				background-color:#F1F2F6;
+				margin:0 auto;
+			}
+			#logo{
+				width:300px;
+				height:80px;
+				float:left;
+				line-height:80px;
+				margin-top:;
+			}
+			#nobrother{
+				width:300px;
+				height:80px;
+				float:left;
+				line-height:80px;
+			}
+			#login{
+				width:350px;
+				float:left;
+				font-size:15px;
+				margin-top:20px;
+				line-height:25px;
+			}
+			#login table{
+				width:330px;
+			}
+			#login table input[type=submit]{
+				width:70px;
+				height:22px;
+				cursor:pointer;
+			}
+			#login table input[type=button]{
+				width:68px;
+				height:22px;
+				background-color:#fc0;
+				border:2px solid #fc0;
+				color:white;
+				cursor:pointer;
+				box-shadow:1px 2px #ccc;
+			}
+		/*====================================*/
+		
+		/*============nav的css样式============*/
+			#nav{
+				width:100%;
+				height:45px;
+				background-color:#075992;
+				line-height:45px;
+				font-size:15px;
+				color:white;
+				/*1170B2*/
+			}
+			#middlenav li{
+				float:left;
+				list-style:none;
+				padding:0px 10px 0px 10px;
+			}
+			#middlenav li a{
+				color:white;
+			}
+			#middlenav li a:hover{
+				color:yellow;
+			}
+			#middlenav .point li{
+				background-color:#1170B2;
+			}
+			#fastroad{
+				float:right;
+				margin-top:5px;
+			}
+		/*====================================*/
+		
+		/*==========大盒子的css样式===========*/
+			#big{
+				width:950px;
+				margin:0 auto;
+			}
+			#search{
+				height:41px;
+				background-image:url("../images/searchA.jpg");
+				line-height:38px;
+				box-shadow:0px 2px 12px #ccc;
+			}
+			#search form{
+				margin-left:70px;
+				float:left;
+			}
+			#search form input[type=text]{
+				height:25px;
+			}
+			#search form select{
+				width:60px;
+				height:30px;
+			}
+			#search form input[type=submit]{
+				width:50px;
+				height:30px;
+			}
+			#search #hot li{
+				float:left;
+				list-style:none;
+				margin-left:10px;
+				font-size:15px;
+				line-height:45px;
+			}
+			#search #hot li.red{
+				color:red;
+			}
+			#search #guanzhu{
+				float:left;
+				margin-left:160px;
+				/*border:1px solid red;*/
+			}
+			#search #guanzhu ul{
+				margin-top:3px;
+				list-style:none;
+			}
+			#search #guanzhu ul li{
+				float:left;
+				margin-left:8px;
+			}
+			#yindao{
+				width:950px;
+				height:45px;
+				line-height:45px;
+				/*border:1px solid red;*/
+			}
+			#yindao p{
+				width:950px;
+				height:45px;
+				line-height:45px;
+				padding-left:25px;
+				float:left;
+				/*border:1px solid red;*/
+				background:url("./public/ydjian.png") no-repeat 0px,10px;
+			}
+			#yindao p a{
+				font-size:15px;
+				color:#636969;
+			}
+			#yindao p a:hover{
+				color:red;
+			}
+			#yindao #newt{
+				float:right;
+			}
+			#list{
+				width:950px;
+				float:left;
+				padding-bottom:20px;
+				border-radius:5px;
+				background-color:white;
+				/*border:1px solid green;*/
+			}
+			#list #listbt{
+				width:950px;
+				float:left;
+				/*border:1px solid blue;*/
+			}
+			#list #listbt #bkname{
+				width:100px;
+				height:50px;
+				float:left;
+				font-size:15px;
+				line-height:50px;
+				padding-left:20px;
+				margin-left:20px;
+				/*border:1px solid red;*/
+				background:url("./public/star.png") no-repeat left center;
+			}
+			#list #listbt #bzname{
+				width:100px;
+				height:50px;
+				float:right;
+				color:#636969;
+				font-size:15px;
+				line-height:50px;
+			}
+			#list #bkinfo{
+				width:920px;
+				height:100px;
+				line-height:100px;
+				margin-top:-20px;
+				margin-bottom:-20px;
+				float:left;
+			}
+			#list #bkinfo #bklogo{
+				width:60px;
+				height:60px;
+				float:left;
+				margin-top:20px;
+				margin-left:21px;
+				/*border:1px solid blue;*/
+			}
+			#list #bkinfo #tjinfo{
+				width:320px;
+				height:28px;
+				margin-top:20px;
+				float:left;
+			}
+			#list #bkinfo #tjinfo ul{
+				list-style:none;
+				float:left;
+				height:30px;
+				line-height:30px;
+				/*border:1px solid red;*/
+			}
+			#list #bkinfo #tjinfo ul li{
+				float:left;
+				margin-left:10px;
+				font-size:12px;
+				color:#636969;
+			}
+			#list #bkinfo #tjinfo ul li span{
+				color:red;
+			}
+			#list #bkinfo #bkjianj{
+				width:320px;
+				height:30px;
+				float:left;
+				margin-top:50px;
+				margin-left:-321px;
+			}
+			#list #bkinfo #bkjianj{
+				/*border:1px solid blue;*/
+			}
+			#list #bkinfo #bkjianj p{
+				font-size:12px;
+				height:30px;
+				float:left;
+				line-height:30px;
+				padding-left:10px;
+				/*border:1px solid yellow;*/
+			}
+			#list #page{
+				float:left;
+				width:950px;
+				margin-top:20px;
+			}
+			#list #page #pagefy{
+				float:left;
+			}
+			#list #page #pagefy ul{
+				list-style:none;
+				margin-left:18px;
+			}
+			#list #page #pagefy ul li{
+				float:left;
+				margin-left:5px;
+				padding:4px 0px;
+				border:1px solid #636969;
+			}
+			#list #page #pagefy ul li a{
+				padding:5px 10px;
+				color:#636969;
+			}
+			#list #page #pagefy ul li a:hover{
+				color:white;
+				background-color:#636969;
+			}
+			#list #page #fatie{
+				float:right;
+				margin-right:20px;
+			}
+			#list #page #fatie button{
+				width:60px;
+				height:30px;
+				color:white;
+				background-color:#fc0;
+				border:1px solid #fc0;
+				border-left:2px solid white;
+				border-top:2px solid white;
+				border-radius:5px;
+				font-weight:bold;
+				cursor:pointer;
+				box-shadow:5px 5px 12px #ccc;
+			}
+			#list #tiezifl{
+				float:left;
+				width:950px;
+				height:25px;
+				line-height:25px;
+				margin-top:15px;
+				background-color:#F1F2F6;
+				border-bottom:2px solid #DCDCDC;
+				font-size:15px;
+			}
+			#list #tiezifl ul{
+				list-style:none;
+			}
+			#list #tiezifl ul li{
+				float:left;
+				padding:0px 15px;
+				margin-left:25px;
+			}
+			#list #tiezifl ul li:hover{
+				background-color:white;
+				margin-top:2px;
+			}
+			#list #tiezifl ul li a{
+				color:black;
+			}
+			#list #tiezifl ul li a:hover{
+				color:red;
+			}
+			#list #tiezifl ul li.gaol{
+				background-color:white;
+				margin-top:2px;
+				padding:0px 15px 0px 15px ;
+			}
+			#list #tiezifl2{
+				width:915px;
+				height:30px;
+				float:left;
+				margin-top:15px;
+				padding-left:35px;
+				border-bottom:1px solid #ccc;
+			}
+			#list #tiezifl2 ul{
+				list-style:none;
+			}
+			#list #tiezifl2 ul li{
+				float:left;
+				margin-left:5px;
+				font-size:12px;
+			}
+			#list #tiezifl2 ul li a{
+				color:#fc3947;
+			}
+			#list #tiezifl2 ul li a:hover{
+				color:black;
+			}
+			#list #biaotou{
+				width:930px;
+				height:30px;
+				line-height:30px;
+				float:left;
+				margin:0px 10px;
+				border-bottom:1px solid #ccc;
+			}
+			#list #biaotou ul{
+				list-style:none;
+			}
+			#list #biaotou ul li{
+				float:left;
+				font-size:15px;
+				color:#636969;
+				margin-left:55px;
+			}
+			#list #biaotou ul li a{
+				color:#636969;
+			}
+			#list #biaotou ul li a:hover{
+				color:blue;
+			}
+			#list #biaotou ul li.tiezibt{
+				width:600px;
+				margin-left:20px;
+			}
+			#list #listks .invitationzt{
+				width:910px;
+				height:30px;
+				line-height:30px;
+				float:left;
+				margin-left:10px;
+				padding-left:20px;
+				/*border:1px solid red;*/
+				border-bottom:1px dashed #ccc;
+			}
+			#list #listks .invitationzt a{
+				font-size:15px;
+				color:black;
+			}
+			#list #listks .invitationzt a:hover{
+				color:blue;
+			}
+			#list #listks .invitationzt .invitalogo{
+				width:30px;
+				height:30px;
+				float:left;
+				/*border:1px solid blue;*/
+			}
+			#list #listks .invitationzt .invitationbt{
+				width:600px;
+				height:30px;
+				float:left;
+				/*border:1px solid blue;*/
+			}
+			#list #listks .invitationzt .custorzt{
+				width:25px;
+				height:30px;
+				float:left;
+			}
+			#list #listks .invitationzt .custor{
+				width:85px;
+				height:30px;
+				float:left;
+				/*border:1px solid blue;*/
+			}
+			#list #listks .invitationzt .reply{
+				width:85px;
+				height:30px;
+				float:left;
+				/*border:1px solid blue;*/
+			}
+			#list #listks .invitationzt .last{
+				width:78px;
+				height:30px;
+				float:left;
+				/*border:1px solid blue;*/
+			}
+		/*====================================*/
+		
+		/*===========clear的css样式===========*/
+			#clear{
+				clear:both;
+			}
+		/*====================================*/
+		
+		/*==========footer的css样式===========*/
+			#footer{
+				width:950px;
+				height:70px;
+				text-align:center;
+				padding-top:20px;
+				margin:0 auto;
+			}
+			#footer p{
+				font-size:13px;
+				line-height:18px;
+				color:#636969;
+				margin-bottom:20px;
+			}
+		/*=============footer结束=============*/

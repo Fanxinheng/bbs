@@ -1,0 +1,222 @@
+/*========top的css样式设计代码=========*/
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			body{
+				background-color:#F1F2F6;
+			}
+			a{
+				text-decoration:none;
+			}
+			#top{
+				width:100%;
+				height:27px;
+				border-bottom:1px solid white;
+				background-color:#E6E9EE;
+				line-height:27px;
+			}
+			.middlediv{
+				margin:0 auto;
+				width:950px;
+			}
+			#leftnav{
+				list-style:none;
+			}
+			#leftnav li a{
+				float:left;
+				font-size:13px;
+				margin-left:5px;
+				color:#636969;
+				text-decoration:none;
+			}
+			#leftnav li a:hover{
+				color:blue;
+			}
+			#rightnav{
+				list-style:none;
+			}
+			#rightnav li a{
+				float:right;
+				font-size:13px;
+				margin-left:5px;
+				color:#636969;
+				text-decoration:none;
+			}
+			#rightnav li a:hover{
+				color:blue;
+			}
+		/*====================================*/
+		
+		/*==========header的css代码===========*/
+			#header{
+				width:950px;
+				height:80px;
+				background-color:#F1F2F6;
+				margin:0 auto;
+			}
+			#logo{
+				width:300px;
+				height:80px;
+				float:left;
+				line-height:80px;
+				margin-top:;
+			}
+			#nobrother{
+				width:300px;
+				height:80px;
+				float:left;
+				line-height:80px;
+			}
+			#login{
+				width:350px;
+				float:left;
+				font-size:15px;
+				margin-top:20px;
+				line-height:25px;
+			}
+			#login table{
+				width:330px;
+			}
+			#login table input[type=submit]{
+				width:70px;
+				height:22px;
+				cursor:pointer;
+			}
+			#login table input[type=button]{
+				width:68px;
+				height:22px;
+				background-color:#fc0;
+				border:2px solid #fc0;
+				color:white;
+				cursor:pointer;
+				box-shadow:1px 2px #ccc;
+			}
+		/*====================================*/
+		
+		/*============nav的css样式============*/
+			#nav{
+				width:100%;
+				height:45px;
+				background-color:#075992;
+				line-height:45px;
+				font-size:15px;
+				color:white;
+				/*1170B2*/
+			}
+			#middlenav li{
+				float:left;
+				list-style:none;
+				padding:0px 10px 0px 10px;
+			}
+			#middlenav li a{
+				color:white;
+			}
+			#middlenav li a:hover{
+				color:yellow;
+			}
+			#middlenav .point li{
+				background-color:#1170B2;
+			}
+			#fastroad{
+				float:right;
+				margin-top:5px;
+			}
+		/*====================================*/
+		
+		/*==========大盒子的css样式===========*/
+			#big{
+				width:950px;
+				margin:0 auto;
+			}
+			.btfont{
+				width:930px;
+				height:50px;
+				float:left;
+				line-height:50px;
+				border-radius:5px;
+				background-color:white;
+				color:#636969;
+				font-size:15px;
+				padding-left:20px;
+				border-bottom:1px solid #ccc;
+			}
+			.biaodan{
+				width:800px;
+				height:400px;
+				float:left;
+				background-color:white;
+				border-radius:5px;
+				border-right:1px solid #ccc;
+				/*border:1px solid red;*/
+			}
+			.biaodan .tishi{
+				margin:15px;
+				/*border:1px solid red;*/
+			}
+			.biaodan .tishi p{
+				padding:5px;
+				font-size:13px;
+				background-color:#fffae2;
+			}
+			.biaodan table{
+				margin-left:180px;
+			}
+			.biaodan table tr td.you{
+				text-align:right;
+				font-size:15px;
+				/*border:1px solid #ccc;*/
+			}
+			.biaodan table tr td.you span{
+				color:red;
+			}
+			.biaodan table tr td.zuo input{
+				text-align:left;
+				width:250px;
+				height:30px;
+			}
+			.biaodan table tr td.btn input{
+				width:50px;
+				height:30px;
+			}
+			.butdl{
+				width:149px;
+				height:400px;
+				float:left;
+				border-radius:5px;
+				background-color:white;
+			}
+			.butdl h3{
+				color:red;
+				margin:10px;
+				font-size:15px;
+			}
+			.butdl button{
+				margin-left:11px;
+				width:70px;
+				height:30px;
+			}
+			
+		/*====================================*/
+		
+		/*===========clear的css样式===========*/
+			#clear{
+				clear:both;
+			}
+		/*====================================*/
+		
+		/*==========footer的css样式===========*/
+			#footer{
+				width:950px;
+				height:70px;
+				text-align:center;
+				padding-top:20px;
+				margin:0 auto;
+			}
+			#footer p{
+				font-size:13px;
+				line-height:18px;
+				color:#636969;
+				margin-bottom:20px;
+			}
+		/*=============footer结束=============*/
